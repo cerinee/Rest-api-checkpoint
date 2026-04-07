@@ -5,7 +5,10 @@ const dns = require("node:dns/promises");
 const express = require('express');
 const userRoutes = require('./routes/users');
 const app = express();
-
+const cors = require('cors');
+app.use(cors({
+    origin: ['http://localhost:5173']
+}));
 
 app.use(express.json());
 //connect to MongoDB atlas
