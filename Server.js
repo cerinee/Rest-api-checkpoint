@@ -5,6 +5,7 @@ const dns = require("node:dns/promises");
 const express = require('express');
 const userRoutes = require('./routes/users');
 const app = express();
+const path = require('path');
 const cors = require('cors');
 app.use(cors({
     origin: ['http://localhost:5173']
@@ -24,6 +25,7 @@ async function connectToDb() {
     
 }
 connectToDb();
+app.use("/", express.static(path.join(__dirname, "dist")));
 app.use("/", userRoutes);
 
 
